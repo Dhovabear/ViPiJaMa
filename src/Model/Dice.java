@@ -3,6 +3,8 @@ package Model;
 import Exceptions.ValeurNegatifException;
 import Exceptions.ValeurTropGrandeException;
 
+import java.util.Random;
+
 public class Dice {
 
     private Face[] faces;
@@ -28,5 +30,9 @@ public class Dice {
 
     public void changerFace(int num, Face nface) {
         faces[num] = nface;
+    }
+
+    public Face roll(Random rng){
+        return faces[rng.nextInt(6)];
     }
 }
