@@ -9,7 +9,7 @@ public class main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainScene2.fxml"));
         Parent root = loader.load();
         Scene mainScene = new Scene(root,300,275);
         stage.setTitle("Dice Forge");
