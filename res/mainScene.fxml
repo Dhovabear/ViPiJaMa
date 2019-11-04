@@ -9,7 +9,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="MainScene"
+            fx:controller="Scenes.MainScene"
             prefHeight="400.0" prefWidth="600.0">
     <center>
         <Canvas width="300" height="300" fx:id="canva"/>

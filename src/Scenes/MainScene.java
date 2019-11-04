@@ -1,18 +1,26 @@
+package Scenes;
+
 import Exceptions.ValeurNegatifException;
 import Exceptions.ValeurTropGrandeException;
 import Model.Color;
 import Model.Dice;
 import Model.Face;
+import Vues.DiceView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 import java.awt.*;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URI;
 import java.sql.Time;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -29,6 +37,7 @@ public class MainScene implements Initializable {
     private Canvas canva;
 
     private Dice dee;
+    private DiceView dv;
     private Random rng;
 
     @Override
@@ -45,20 +54,30 @@ public class MainScene implements Initializable {
         } catch (Exception e){}
 
         rng = new Random(System.currentTimeMillis());
+        dv = new DiceView(dee);
+
+        GraphicsContext g = canva.getGraphicsContext2D();
+        g.setFill(javafx.scene.paint.Color.WHEAT);
+        g.fillRect(0,0,300,300);
+
     }
 
     public void rollDice(ActionEvent actionEvent) {
         GraphicsContext g = canva.getGraphicsContext2D();
-        g.setFill(javafx.scene.paint.Color.GRAY);
+        g.setFill(javafx.scene.paint.Color.WHEAT);
         g.fillRect(0,0,300,300);
-        Face goodFace = dee.roll(rng);
-        switch (goodFace.getColor()){
-            case OR: g.setFill(javafx.scene.paint.Color.YELLOW);break;
-            case LUNAIRE: g.setFill(javafx.scene.paint.Color.DARKBLUE);break;
-            case SOLAIRE: g.setFill(javafx.scene.paint.Color.ORANGE);break;
+        dee.roll(rng);
+        dv.draw(rng.nextInt(230),rng.nextInt(230),g);
+        Media son = null;
+
+        try {
+            String yolo = MainScene.class.getResource("/roll2.wav").toURI().toString();
+            son = new Media(yolo);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        g.fillRect(100,100,50, 50);
-        g.setFill(javafx.scene.paint.Color.BLACK);
-        g.fillText(Integer.toString(goodFace.getValeur()),130,130);
+        MediaPlayer mp = new MediaPlayer(son);
+        mp.play();
     }
 }
