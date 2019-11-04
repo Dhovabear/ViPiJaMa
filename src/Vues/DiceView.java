@@ -1,8 +1,8 @@
 package Vues;
 
 import Model.Dice;
-import Model.Face;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class DiceView {
@@ -23,9 +23,10 @@ public class DiceView {
         g.setFill(javafx.scene.paint.Color.GRAY);
         g.fillRoundRect(x,y,70,70,10,10);
         switch (dice.getLastRollResult().getColor()){
-            case OR: g.setFill(javafx.scene.paint.Color.YELLOW);break;
-            case LUNAIRE: g.setFill(javafx.scene.paint.Color.DARKBLUE);break;
-            case SOLAIRE: g.setFill(javafx.scene.paint.Color.ORANGE);break;
+            case Or: g.setFill(javafx.scene.paint.Color.YELLOW);break;
+            case Lunaire: g.setFill(javafx.scene.paint.Color.DARKBLUE);break;
+            case Solaire: g.setFill(javafx.scene.paint.Color.ORANGE);break;
+            case Gloire: g.setFill(Color.GREEN);break;
         }
         g.fillRect(x+10,y+10,50, 50);
         g.setFill(javafx.scene.paint.Color.BLACK);
