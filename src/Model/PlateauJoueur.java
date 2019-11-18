@@ -81,4 +81,16 @@ public class PlateauJoueur {
     public int getNbExtension() {
         return nbExtension;
     }
+
+    public int getMaxOr() {
+        return maxOr;
+    }
+
+    public int getMaxLunaire() {
+        return maxLunaire;
+    }
+
+    public int getMaxSolaire() {
+        return maxSolaire;
+    }
 }
