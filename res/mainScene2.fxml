@@ -15,8 +15,10 @@
         <Tab text="Lancer de dés" closable="false">
             <fx:include source="mainScene.fxml"/>
         </Tab>
-        <Tab text="Prot" closable="false">
-            <Button text="VOITURE" style="-fx-shape: s"/>
+        <Tab text="PlateauPerso" closable="false">
+        </Tab>
+        <Tab text="Magasin" closable="false">
+            <fx:include source="shop.fxml"/>
         </Tab>
     </tabs>
 </TabPane>
