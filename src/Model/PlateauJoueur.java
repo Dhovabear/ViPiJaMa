@@ -10,6 +10,8 @@ public class PlateauJoueur {
     private int ptVictoire;
     private int nbExtension;
 
+    public static PlateauJoueur joueurCourant;
+
     public PlateauJoueur(){
         or = 0;
         maxOr = 12;

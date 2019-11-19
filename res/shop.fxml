@@ -16,20 +16,22 @@
 
     <HBox>
         <children>
-            <ComboBox fx:id="prix" value="2" onAction="#updateArt">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <Integer fx:value="2"/>
-                        <Integer fx:value="3"/>
-                        <Integer fx:value="4"/>
-                        <Integer fx:value="5"/>
-                        <Integer fx:value="6"/>
-                        <Integer fx:value="8"/>
-                        <Integer fx:value="12"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
-
+            <VBox>
+                <Label fx:id="orDisplayer" text="Or:"/>
+                <ComboBox fx:id="prix" value="2" onAction="#updateArt">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <Integer fx:value="2"/>
+                            <Integer fx:value="3"/>
+                            <Integer fx:value="4"/>
+                            <Integer fx:value="5"/>
+                            <Integer fx:value="6"/>
+                            <Integer fx:value="8"/>
+                            <Integer fx:value="12"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
             <VBox style="-fx-background-color: beige" fx:id="listArticles">
             </VBox>
         </children>

@@ -1,9 +1,12 @@
 package Scenes;
 
+import Exceptions.LimiteAtteinteException;
 import Model.Color;
 import Model.Dice;
 import Model.Face;
+import Model.PlateauJoueur;
 import Vues.DiceView;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +17,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.transform.Transform;
+import javafx.scene.transform.Translate;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -54,6 +60,9 @@ public class MainScene  implements Initializable {
         rng = new Random(System.currentTimeMillis());
         dv = new DiceView(dee);
 
+        PlateauJoueur j1 = new PlateauJoueur();
+        try {j1.addOr(8);} catch (Exception e){}
+        PlateauJoueur.joueurCourant = j1;
 
 
     }

@@ -1,9 +1,11 @@
 package Scenes;
 
+import Exceptions.LimiteAtteinteException;
 import Exceptions.ValeurNegatifException;
 import Exceptions.ValeurTropGrandeException;
 import Model.Color;
 import Model.Face;
+import Model.PlateauJoueur;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -30,16 +32,19 @@ public class Shop implements Initializable {
     @FXML
     VBox listArticles;
 
+    @FXML
+    Label orDisplayer;
+
     HashMap<Integer,List<Face>> magasin;
 
 
 
-    public void Buy(ActionEvent actionEvent) {
+    public void Buy(ActionEvent actionEvent) throws LimiteAtteinteException {
         HBox b = (HBox)((Node)actionEvent.getSource()).getParent();
         int idToBuy = Integer.parseInt(b.getId());
         System.out.println("idTo>Buy="+idToBuy);
         int currentPrix = prix.getValue();
-        //on donne le truc au joueur
+        PlateauJoueur.joueurCourant.addOr(-currentPrix);
         magasin.get(currentPrix).remove(magasin.get(currentPrix).get(idToBuy));
         updateArt(actionEvent);
 
@@ -75,11 +80,24 @@ public class Shop implements Initializable {
         magasin.put(6,new ArrayList<>());
         magasin.put(8,new ArrayList<>());
         magasin.put(12,new ArrayList<>());
+        Thread cDegeuMaisGPaLeChoa = new Thread(){
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(300);
+                    updateArt(new ActionEvent());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        cDegeuMaisGPaLeChoa.start();
     }
 
     public void updateArt(ActionEvent actionEvent) {
         int prixn = prix.getValue();
         listArticles.getChildren().clear();
+        orDisplayer.setText("Or: " + PlateauJoueur.joueurCourant.getOr());
         if(magasin.get(prixn).isEmpty() || !magasin.containsKey(prixn)){
             Label l2 = new Label();
             l2.setStyle("-fx-background-color: red");
@@ -97,10 +115,16 @@ public class Shop implements Initializable {
 
             Button bt = new Button();
             bt.setText("Buy");
+            if(prixn > PlateauJoueur.joueurCourant.getOr()){bt.setDisable(true);}
+            else{bt.setDisable(false);}
             bt.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    Buy(actionEvent);
+                    try {
+                        Buy(actionEvent);
+                    } catch (LimiteAtteinteException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
 

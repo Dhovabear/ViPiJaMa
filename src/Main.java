@@ -12,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainScene2.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/mainScene2.fxml"));
         Parent root = loader.load();
         Scene mainScene = new Scene(root,350,350);
         stage.setTitle("Dice Forge");
