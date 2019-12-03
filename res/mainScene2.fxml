@@ -17,6 +17,9 @@
         <Tab text="PlateauPerso" closable="false">
             <fx:include source="PlateauJoueurVue.fxml"/>
         </Tab>
+        <Tab text="Plateau" closable="false">
+            <fx:include source="Plateau.fxml"/>
+        </Tab>
         <Tab text="Magasin" closable="false">
             <fx:include source="shop.fxml"/>
         </Tab>

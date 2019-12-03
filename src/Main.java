@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/mainScene2.fxml"));
         Parent root = loader.load();
-        Scene mainScene = new Scene(root,350,350);
+        Scene mainScene = new Scene(root,900,600);
         stage.setTitle("Dice Forge");
         stage.setScene(mainScene);
         stage.sizeToScene();

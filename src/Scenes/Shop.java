@@ -47,7 +47,6 @@ public class Shop implements Initializable {
         PlateauJoueur.joueurCourant.addOr(-currentPrix);
         magasin.get(currentPrix).remove(magasin.get(currentPrix).get(idToBuy));
         updateArt(actionEvent);
-
     }
 
     @Override

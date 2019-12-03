@@ -4,6 +4,8 @@ package Model;
 import Exceptions.LimiteAtteinteException;
 import Exceptions.ValeurNegatifException;
 
+import java.util.ArrayList;
+
 public class PlateauJoueur {
     private int or, maxOr;
     private int lunaire, solaire, maxLunaire, maxSolaire;
