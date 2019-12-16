@@ -88,8 +88,10 @@ public class Controller implements Initializable {
         deeDisp.draw(20,(int)MainClass.cnv.getHeight()-80,MainClass.cnv.getGraphicsContext2D());
 
         deeDisp.changeTarget(MainClass.gm.getCurrentPlayer().getDee(1));
-        deeDisp.draw(90,(int)MainClass.cnv.getHeight()-80, MainClass.cnv.getGraphicsContext2D());
+        deeDisp.draw(100,(int)MainClass.cnv.getHeight()-80, MainClass.cnv.getGraphicsContext2D());
 
+
+        jv.draw((int)MainClass.cnv.getWidth(),0,MainClass.cnv.getGraphicsContext2D());
         bouttonPasseTour.setDisable(false);
     }
 }
