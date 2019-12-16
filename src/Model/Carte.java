@@ -9,4 +9,6 @@ public class Carte {
         this.prixSolaire = prixSolaire;
         this.image = image;
     }
+
+
 }
